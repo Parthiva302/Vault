@@ -58,6 +58,17 @@ VITE_SUPABASE_ANON_KEY=your-publishable-or-anon-key
 
 Only use the publishable/anon key in the frontend. Do not put a service role key in this app.
 
+This project uses Vite, so environment variables must start with `VITE_`. Supabase examples for Next.js often use `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`, `@supabase/ssr`, `page.tsx`, and middleware helpers. Those are only needed for a Next.js server-rendered app. Vault uses a browser client in `src/lib/supabase.ts` instead:
+
+```ts
+import { createClient } from '@supabase/supabase-js';
+
+export const supabase = createClient(
+  import.meta.env.VITE_SUPABASE_URL,
+  import.meta.env.VITE_SUPABASE_ANON_KEY,
+);
+```
+
 Next, open the Supabase SQL Editor and run the SQL from:
 
 ```text
