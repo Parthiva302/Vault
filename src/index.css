@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-vault-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-vault-bg text-vault-text font-sans antialiased;
+    background-image: linear-gradient(135deg, #0d0f14 0%, #111827 52%, #10201d 100%);
+    min-height: 100vh;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-vault-bg;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-vault-border rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-vault-muted;
+  }
+
+  ::selection {
+    background: rgba(108, 99, 255, 0.3);
+  }
+}
+
+@layer components {
+  .vault-card {
+    @apply bg-vault-card border border-vault-border rounded-xl shadow-card transition-all duration-200;
+  }
+
+  .vault-card:hover {
+    @apply border-vault-accent/30 shadow-glow-sm;
+  }
+
+  .vault-input {
+    @apply bg-vault-surface border border-vault-border rounded-lg px-3 py-2 text-vault-text placeholder-vault-muted
+           focus:outline-none focus:border-vault-accent focus:ring-1 focus:ring-vault-accent/50
+           transition-all duration-200 w-full text-sm;
+  }
+
+  .vault-btn-primary {
+    @apply bg-vault-accent hover:bg-vault-accent-dim text-white font-medium px-4 py-2 rounded-lg
+           transition-all duration-200 flex items-center gap-2 text-sm
+           hover:shadow-glow active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .vault-btn-ghost {
+    @apply text-vault-muted hover:text-vault-text hover:bg-vault-border/50 px-3 py-2 rounded-lg
+           transition-all duration-200 flex items-center gap-2 text-sm;
+  }
+
+  .vault-btn-danger {
+    @apply text-vault-danger hover:bg-vault-danger/10 px-3 py-2 rounded-lg
+           transition-all duration-200 flex items-center gap-2 text-sm;
+  }
+
+  .section-header {
+    @apply flex items-center justify-between mb-6 pb-4 border-b border-vault-border;
+  }
+
+  .section-title {
+    @apply text-xl font-bold text-vault-text flex items-center gap-3;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .badge-accent {
+    @apply badge bg-vault-accent/20 text-vault-accent border border-vault-accent/30;
+  }
+
+  .badge-muted {
+    @apply badge bg-vault-border text-vault-muted;
+  }
+
+  .tag-chip {
+    @apply inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs
+           bg-vault-accent/15 text-vault-accent/90 border border-vault-accent/20
+           cursor-pointer hover:bg-vault-accent/25 transition-colors;
+  }
+
+  .modal-overlay {
+    @apply fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fade-in;
+  }
+
+  .modal-box {
+    @apply bg-vault-card border border-vault-border rounded-2xl shadow-card w-full max-w-lg
+           animate-scale-in max-h-[90vh] overflow-y-auto;
+  }
+
+  .empty-state {
+    @apply flex flex-col items-center justify-center py-16 text-vault-muted;
+  }
+
+  .grid-cards {
+    @apply grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-vault-accent to-purple-400 bg-clip-text text-transparent;
+  }
+
+  .glow-border {
+    box-shadow: 0 0 0 1px rgba(108, 99, 255, 0.4), 0 0 20px rgba(108, 99, 255, 0.1);
+  }
+}
